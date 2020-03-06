@@ -8,7 +8,7 @@ export default function TextDisplayBox (props){
       <textarea
         className="text-io"
         value={props.text}
-        onChange={(e) => {props.sync(e.target.value)}}
+        onChange={(e) => {props.sync(e.target.value, props.type)}}
       />
       
     </div>

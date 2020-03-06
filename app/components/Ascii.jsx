@@ -2,7 +2,7 @@ import React from 'react'
 import TextDisplayBox from './TextDisplayBox'
 import ImageDisplayBox from './ImageDisplayBox'
 
-import {asciiToHex, asciiToBin} from '../helpers/binHex'
+import setText from '../helpers/ascii/setText'
 
 
 export default class Ascii extends React.Component {
@@ -11,22 +11,47 @@ export default class Ascii extends React.Component {
     this.sync = this.sync.bind(this);
     this.state = {
       inputText: 'abc',
+      inputType: 'ascii'
     };
   }
   
-  sync(inputText) {
-    this.setState({inputText: inputText});
+  sync(inputText, type) {
+    this.setState({
+      inputText: inputText,
+      inputType: type
+    });
   }
-  
-  
+
   render() {
+
+    const inputText = this.state.inputText;
+    const inputType = this.state.inputType;
     
     return (
       <div class="section">
         <h2 className="title">ASCII</h2>
-        <TextDisplayBox name="Binary" text={asciiToBin(this.state.inputText)} />
-        <TextDisplayBox name="Hex" text={asciiToHex(this.state.inputText)} />
-        <TextDisplayBox name="ASCII" text={this.state.inputText} sync={this.sync} />
+
+        <TextDisplayBox
+          name="Binary"
+          type="binary"
+          text={setText(inputText, inputType, 'binary')}
+          sync={this.sync}
+        />
+        
+        <TextDisplayBox
+          name="Hex"
+          type="hex"
+          text={setText(inputText, inputType, 'hex')}
+          sync={this.sync}
+        />
+
+        <TextDisplayBox
+          name="ASCII"
+          type="ascii"
+          text={setText(inputText, inputType, 'ascii')}
+          sync={this.sync}
+        />
+
       </div>
     )
   }
