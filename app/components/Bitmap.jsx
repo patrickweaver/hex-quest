@@ -13,8 +13,8 @@ const defaultImage =
  00 00 12 00 00 00 27 00
  00 00 27 00 00 00 00 00
  00 00 00 00 00 00 33 33
- FF 00 44 FF 22 00 77 66
- 55 00 CC BB AA 00 00 00
+ FF 00 8C 32 2C 00 86 A8
+ 00 00 8A 8A 8D 00 00 00
 `
 
 export default class Bitmap extends React.Component {
